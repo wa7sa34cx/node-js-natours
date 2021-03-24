@@ -1,0 +1,19 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "Learning Node.js, Express.js and MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wa7sa34cx/node-js-natours.git"
+  },
+  "author": "Alex Black",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wa7sa34cx/node-js-natours/issues"
+  },
+  "homepage": "https://github.com/wa7sa34cx/node-js-natours#readme"
+}
