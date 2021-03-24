@@ -1,0 +1,11 @@
+# some my files
+/_tmp
+
+# npm modules
+/node_modules
+
+# OSX
+.DS_Store
+
+# VSC plagins
+.prettierrc
