@@ -3,18 +3,35 @@
 import fs from 'fs'
 import express from 'express'
 
+// Initialize application
 const app = express()
+
+// global vars
 const port = 3013
 const toursDB = './dev-data/data/tours-simple.json'
 
+// ------------
+// Middlewares
+// ------------
+
+// JSON
 app.use(express.json())
 
+// Our own middleware
+app.use((req, res, next) => {
+  console.log('Hello from the middleware')
+  next()
+})
+
+// ---------------------------
+// SELECT tours from Database
+// ---------------------------
 const tours = JSON.parse(fs.readFileSync(toursDB))
 
-// --------------
-// Get all tours
-// --------------
-app.get('/api/v1/tours', (req, res) => {
+// -----------------------
+// Get all tours function
+// -----------------------
+const getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
     results: tours.length,
@@ -22,12 +39,12 @@ app.get('/api/v1/tours', (req, res) => {
       tours: tours,
     },
   })
-})
+}
 
-// ---------------
-// Get tour by id
-// ---------------
-app.get('/api/v1/tours/:id', (req, res) => {
+// ------------------------
+// Get tour by id function
+// ------------------------
+const getTourById = (req, res) => {
   // console.log(req.params)
   const id = req.params.id * 1
   const tour = tours.find(el => el.id === id)
@@ -46,12 +63,12 @@ app.get('/api/v1/tours/:id', (req, res) => {
     status: 'fail',
     message: 'Tour not found',
   })
-})
+}
 
-// ----------------
-// Create new tour
-// ----------------
-app.post('/api/v1/tours', (req, res) => {
+// -------------------------
+// Create new tour function
+// -------------------------
+const createTour = (req, res) => {
   // console.log(req.body)
 
   const newId = tours[tours.length - 1].id + 1
@@ -67,27 +84,44 @@ app.post('/api/v1/tours', (req, res) => {
       },
     })
   })
-})
+}
 
-// ------------
-// Update tour
-// ------------
-app.patch('/api/v1/tours/:id', (req, res) => {
+// ---------------------
+// Update tour function
+// ---------------------
+const updateTour = (req, res) => {
   res.status(200).json({
     status: 'success',
     message: 'Tour has been updated',
   })
-})
+}
 
-// ------------
-// Delete tour
-// ------------
-app.delete('/api/v1/tours/:id', (req, res) => {
+// ---------------------
+// Delete tour function
+// ---------------------
+const deleteTour = (req, res) => {
   res.status(200).json({
     status: 'success',
-    message: 'Tour has been deleted',
+    data: null,
   })
-})
+}
+
+// app.get('/api/v1/tours', getAllTours)
+// app.get('/api/v1/tours/:id', getTourById)
+// app.post('/api/v1/tours', createTour)
+// app.patch('/api/v1/tours/:id', updateTour)
+// app.delete('/api/v1/tours/:id', deleteTour)
+
+// -------
+// Routes
+// -------
+app.route('/api/v1/tours').get(getAllTours).post(createTour)
+
+app
+  .route('/api/v1/tours/:id')
+  .get(getTourById)
+  .patch(updateTour)
+  .delete(deleteTour)
 
 // -----------
 // Run server
