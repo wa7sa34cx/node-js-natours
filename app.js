@@ -69,6 +69,29 @@ app.post('/api/v1/tours', (req, res) => {
   })
 })
 
-app.app.listen(port, () => {
+// ------------
+// Update tour
+// ------------
+app.patch('/api/v1/tours/:id', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Tour has been updated',
+  })
+})
+
+// ------------
+// Delete tour
+// ------------
+app.delete('/api/v1/tours/:id', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Tour has been deleted',
+  })
+})
+
+// -----------
+// Run server
+// -----------
+app.listen(port, () => {
   console.log(`Listening...`)
 })
