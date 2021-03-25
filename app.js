@@ -2,6 +2,7 @@
 
 import fs from 'fs'
 import express from 'express'
+import morgan from 'morgan'
 
 // Initialize application
 const app = express()
@@ -22,6 +23,9 @@ app.use((req, res, next) => {
   console.log('Hello from the middleware')
   next()
 })
+
+// Morgan
+app.use(morgan('dev'))
 
 // ---------------------------
 // SELECT tours from Database
