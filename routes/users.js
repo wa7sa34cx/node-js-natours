@@ -8,11 +8,9 @@ import {
   deleteUser,
 } from '../handlers/users.js'
 
-export const usersRouter = () => {
-  const router = express.Router()
+const router = express.Router()
 
-  router.route('/').get(getAllUsers).post(createUser)
-  router.route('/:id').get(getUserById).patch(updateUser).delete(deleteUser)
+router.route('/').get(getAllUsers).post(createUser)
+router.route('/:id').get(getUserById).patch(updateUser).delete(deleteUser)
 
-  return router
-}
+export default router
