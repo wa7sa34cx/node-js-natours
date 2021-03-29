@@ -22,6 +22,11 @@ app.use((req, res, next) => {
 // Morgan
 app.use(morgan('dev'))
 
+// -------------
+// Static files
+// -------------
+app.use(express.static('public'))
+
 // -------
 // Routes
 // -------
