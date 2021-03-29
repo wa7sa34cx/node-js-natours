@@ -1,19 +1,9 @@
 import express from 'express'
 import morgan from 'morgan'
-import {
-  getAllTours,
-  createTour,
-  getTourById,
-  updateTour,
-  deleteTour,
-} from './handlers/tours.js'
-import {
-  getAllUsers,
-  createUser,
-  getUserById,
-  updateUser,
-  deleteUser,
-} from './handlers/users.js'
+
+import { toursRouter } from './routes/tours.js'
+import { usersRouter } from './routes/users.js'
+
 // Initialize application
 const app = express()
 
@@ -35,21 +25,8 @@ app.use(morgan('dev'))
 // -------
 // Routes
 // -------
-app.route('/api/v1/tours').get(getAllTours).post(createTour)
-
-app
-  .route('/api/v1/tours/:id')
-  .get(getTourById)
-  .patch(updateTour)
-  .delete(deleteTour)
-
-app.route('/api/v1/users').get(getAllUsers).post(createUser)
-
-app
-  .route('/api/v1/users/:id')
-  .get(getUserById)
-  .patch(updateUser)
-  .delete(deleteUser)
+app.use('/api/v1/tours', toursRouter())
+app.use('/api/v1/users', usersRouter())
 
 // -----------
 // Run server
