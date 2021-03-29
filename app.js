@@ -7,7 +7,13 @@ import {
   updateTour,
   deleteTour,
 } from './handlers/tours.js'
-
+import {
+  getAllUsers,
+  createUser,
+  getUserById,
+  updateUser,
+  deleteUser,
+} from './handlers/users.js'
 // Initialize application
 const app = express()
 
@@ -37,13 +43,13 @@ app
   .patch(updateTour)
   .delete(deleteTour)
 
-// app.route('/api/v1/users').get(getAllUsers).post(createUser)
+app.route('/api/v1/users').get(getAllUsers).post(createUser)
 
-// app
-//   .route('/api/v1/users/:id')
-//   .get(getUserById)
-//   .patch(updateUser)
-//   .delete(deleteUser)
+app
+  .route('/api/v1/users/:id')
+  .get(getUserById)
+  .patch(updateUser)
+  .delete(deleteUser)
 
 // -----------
 // Run server

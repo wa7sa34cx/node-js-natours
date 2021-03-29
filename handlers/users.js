@@ -11,7 +11,7 @@ const users = JSON.parse(fs.readFileSync(usersDB))
 export const getAllUsers = (req, res) => {
   res.status(200).json({
     status: 'success',
-    results: tours.length,
+    results: users.length,
     data: {
       users,
     },
