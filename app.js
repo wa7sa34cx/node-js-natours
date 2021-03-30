@@ -1,8 +1,8 @@
 import express from 'express'
 import morgan from 'morgan'
 
-import toursRouter from './routes/tours.js'
-import usersRouter from './routes/users.js'
+import toursRouter from './routes/tours'
+import usersRouter from './routes/users'
 
 // Initialize application
 const app = express()
@@ -10,6 +10,7 @@ const app = express()
 // ------------
 // Middlewares
 // ------------
+
 // JSON middleware
 app.use(express.json())
 
@@ -20,7 +21,9 @@ app.use((req, res, next) => {
 })
 
 // Morgan
-app.use(morgan('dev'))
+if (process.env.MODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
 
 // -------------
 // Static files
