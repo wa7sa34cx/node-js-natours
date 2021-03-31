@@ -76,7 +76,7 @@ export const createTour = (req, res) => {
 
   tours.push(newTour)
 
-  fs.writeFile(toursDB, JSON.stringify(tours) => {
+  fs.writeFile(toursDB, JSON.stringify(tours), err => {
     res.status(201).json({
       status: 'success',
       data: {

@@ -9,3 +9,6 @@
 
 # VSC plagins
 .prettierrc
+
+# env
+config.env
