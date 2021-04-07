@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+// import fs from 'fs'
+// import path from 'path'
 import Tour from './../models/tourModel.js'
 
 // const __dirname = path.resolve()
@@ -9,20 +9,20 @@ import Tour from './../models/tourModel.js'
 // ---------
 // Check ID
 // ---------
-export const checkID = (req, res, next, val) => {
-  // const tour = tours.find(el => el.id === val * 1)
-  // console.log(val)
-  // console.log(tour)
+// export const checkID = (req, res, next, val) => {
+// const tour = tours.find(el => el.id === val * 1)
+// console.log(val)
+// console.log(tour)
 
-  // if (!tour) {
-  //   return res.status(404).json({
-  //     status: 'fail',
-  //     message: 'Invalid ID',
-  //   })
-  // }
+// if (!tour) {
+//   return res.status(404).json({
+//     status: 'fail',
+//     message: 'Invalid ID',
+//   })
+// }
 
-  next()
-}
+// next()
+// }
 
 // -----------
 // Check Body

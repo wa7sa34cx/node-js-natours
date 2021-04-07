@@ -15,10 +15,10 @@ const app = express()
 app.use(express.json())
 
 // Our own middleware
-app.use((req, res, next) => {
-  console.log('Hello from the middleware')
-  next()
-})
+// app.use((req, res, next) => {
+//   console.log('Hello from the middleware')
+//   next()
+// })
 
 // Morgan
 if (process.env.MODE_ENV === 'development') {
