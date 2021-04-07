@@ -6,7 +6,7 @@ import {
   getUserById,
   updateUser,
   deleteUser,
-} from '../handlers/users.js'
+} from './../handlers/usersHandler.js'
 
 const router = express.Router()
 

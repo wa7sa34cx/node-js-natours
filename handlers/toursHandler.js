@@ -1,9 +1,10 @@
 import fs from 'fs'
 import path from 'path'
+import Tour from './../models/tourModel.js'
 
-const __dirname = path.resolve()
-const toursDB = path.resolve(__dirname, 'dev-data/data/tours-simple.json')
-const tours = JSON.parse(fs.readFileSync(toursDB))
+// const __dirname = path.resolve()
+// const toursDB = path.resolve(__dirname, 'dev-data/data/tours-simple.json')
+// const tours = JSON.parse(fs.readFileSync(toursDB))
 
 // ---------
 // Check ID

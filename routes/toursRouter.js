@@ -8,7 +8,7 @@ import {
   getTourById,
   updateTour,
   deleteTour,
-} from '../handlers/tours.js'
+} from './../handlers/toursHandler.js'
 
 const router = express.Router()
 
