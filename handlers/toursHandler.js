@@ -41,21 +41,48 @@ import Tour from './../models/tourModel.js'
 // -----------------------
 // Get all tours function
 // -----------------------
-export const getAllTours = (req, res) => {
-  res.status(200).json({
-    status: 'success',
-    // results: tours.length,
-    // data: {
-    //   tours: tours,
-    // },
-  })
+export const getAllTours = async (req, res) => {
+  try {
+    const tours = await Tour.find()
+
+    res.status(200).json({
+      status: 'success',
+      results: tours.length,
+      data: {
+        tours: tours,
+      },
+    })
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      data: {
+        message: err,
+      },
+    })
+  }
 }
 
 // ------------------------
 // Get tour by id function
 // ------------------------
-export const getTourById = (req, res) => {
-  const id = req.params.id * 1
+export const getTourById = async (req, res) => {
+  try {
+    const tour = await Tour.findById(req.params.id)
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        tour,
+      },
+    })
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      data: {
+        message: err,
+      },
+    })
+  }
 }
 
 // -------------------------
@@ -86,11 +113,27 @@ export const createTour = async (req, res) => {
 // ---------------------
 // Update tour function
 // ---------------------
-export const updateTour = (req, res) => {
-  res.status(200).json({
-    status: 'success',
-    message: 'Tour has been updated',
-  })
+export const updateTour = async (req, res) => {
+  try {
+    const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    })
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        tour,
+      },
+    })
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      data: {
+        message: err,
+      },
+    })
+  }
 }
 
 // ---------------------
