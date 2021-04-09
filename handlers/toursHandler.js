@@ -61,19 +61,26 @@ export const getTourById = (req, res) => {
 // -------------------------
 // Create new tour function
 // -------------------------
-export const createTour = (req, res) => {
-  // console.log(req.body)
-  // const newId = tours[tours.length - 1].id + 1
-  // const newTour = Object.assign({ id: newId }, req.body)
-  // tours.push(newTour)
-  // fs.writeFile(toursDB, JSON.stringify(tours), err => {
-  //   res.status(201).json({
-  //     status: 'success',
-  //     data: {
-  //       tour: newTour,
-  //     },
-  //   })
-  // })
+export const createTour = async (req, res) => {
+  // const tour = new Tour({})
+  // tour.save()
+  try {
+    const tour = await Tour.create(req.body)
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        tour,
+      },
+    })
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      data: {
+        message: err,
+      },
+    })
+  }
 }
 
 // ---------------------
