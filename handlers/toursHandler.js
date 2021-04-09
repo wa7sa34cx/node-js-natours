@@ -27,16 +27,16 @@ import Tour from './../models/tourModel.js'
 // -----------
 // Check Body
 // -----------
-export const checkBody = (req, res, next) => {
-  if (!req.body.name || !req.body.price) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Missing name or price',
-    })
-  }
+// export const checkBody = (req, res, next) => {
+//   if (!req.body.name || !req.body.price) {
+//     return res.status(404).json({
+//       status: 'fail',
+//       message: 'Missing name or price',
+//     })
+//   }
 
-  next()
-}
+//   next()
+// }
 
 // -----------------------
 // Get all tours function
