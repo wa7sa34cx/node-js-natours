@@ -5,6 +5,7 @@ import {
   // checkBody,
   aliasTopTurs,
   getTourStats,
+  getMonthlyPlan,
   getAllTours,
   createTour,
   getTourById,
@@ -19,6 +20,7 @@ const router = express.Router()
 
 router.route('/top-5-best').get(aliasTopTurs, getAllTours)
 router.route('/stats').get(getTourStats)
+router.route('/monthly-plan/:year').get(getMonthlyPlan)
 router.route('/').get(getAllTours).post(createTour)
 router.route('/:id').get(getTourById).patch(updateTour).delete(deleteTour)
 
