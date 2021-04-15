@@ -183,7 +183,7 @@ export const getTourStats = async (req, res) => {
       },
       {
         $group: {
-          _id: '$difficulty',
+          _id: { $toUpper: '$difficulty' },
           numTours: { $sum: 1 },
           numRatings: { $sum: '$ratingsQuantity' },
           avgRating: { $avg: '$ratingsAverage' },
@@ -193,8 +193,11 @@ export const getTourStats = async (req, res) => {
         },
       },
       {
-        $sort: { $avgPrice: 1 },
+        $sort: { avgPrice: 1 },
       },
+      // {
+      //   $match: { _id: { $ne: 'EASY' } }
+      // }
     ])
 
     res.status(200).json({
@@ -206,9 +209,7 @@ export const getTourStats = async (req, res) => {
   } catch (err) {
     res.status(404).json({
       status: 'fail',
-      data: {
-        message: err,
-      },
+      message: err,
     })
   }
 }
